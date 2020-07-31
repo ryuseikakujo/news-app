@@ -30,23 +30,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = () => {
+const ListItem = ({ imageUrl, title, author }) => {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.leftContainer}>
-        <Image
-          style={styles.image}
-          source={{ uri: "https://picsum.photos/id/10/200/200" }}
-        />
+        <Image style={styles.image} source={{ url: imageUrl }} />
       </View>
       <View style={styles.rightContainer}>
         <Text style={styles.text} numberOfLines={3}>
-          Lorem ipsum is typically a corrupted version of De finibus bonorum et
-          malorum, a first-century BC text by the Roman statesman and
-          philosopher Cicero, with words altered, added, and removed to make it
-          nonsensical, improper Latin.
+          {title}
         </Text>
-        <Text style={styles.subText}>ReactNews</Text>
+        <Text style={styles.subText}>{author}</Text>
       </View>
     </View>
   );
