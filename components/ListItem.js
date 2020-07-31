@@ -40,7 +40,7 @@ const ListItem = ({ imageUrl, title, author }) => {
         <Text style={styles.text} numberOfLines={3}>
           {title}
         </Text>
-        <Text style={styles.subText}>{author}</Text>
+        <Text style={styles.subText}>{author && author}</Text>
       </View>
     </View>
   );
