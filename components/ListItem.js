@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { noImagePic } from "../assets";
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
     width: 100,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 98,
+    height: 98,
   },
   rightContainer: {
     flex: 1,
@@ -30,11 +31,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = ({ imageUrl, title, author }) => {
+const ListItem = ({ imageUrl, title, author, onPress }) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
-        <Image style={styles.image} source={{ url: imageUrl }} />
+        {imageUrl ? (
+          <Image style={styles.image} source={{ url: imageUrl }} />
+        ) : (
+          <Image style={styles.image} source={noImagePic} />
+        )}
       </View>
       <View style={styles.rightContainer}>
         <Text style={styles.text} numberOfLines={3}>
@@ -42,7 +47,7 @@ const ListItem = ({ imageUrl, title, author }) => {
         </Text>
         <Text style={styles.subText}>{author && author}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
