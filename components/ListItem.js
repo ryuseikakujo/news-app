@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = ({ imageUrl, title, author, onPress }) => {
+const ListItem = ({ imageUrl, title, author, publishedAt, onPress }) => {
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
         {imageUrl ? (
-          <Image style={styles.image} source={{ url: imageUrl }} />
+          <Image style={styles.image} source={{ uri: imageUrl }} />
         ) : (
           <Image style={styles.image} source={noImagePic} />
         )}
@@ -45,7 +45,10 @@ const ListItem = ({ imageUrl, title, author, onPress }) => {
         <Text style={styles.text} numberOfLines={3}>
           {title}
         </Text>
-        <Text style={styles.subText}>{author && author}</Text>
+        <Text style={styles.subText}>
+          {author && author} --
+          {publishedAt && publishedAt.split("T")[0]}
+        </Text>
       </View>
     </TouchableOpacity>
   );
